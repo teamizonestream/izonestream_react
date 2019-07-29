@@ -18,7 +18,7 @@ ReactDOM.render(
       <GlobalStyle />
     </BrowserRouter>
   </ApolloProvider>,
-  document.getElementById("root")
+  document.getElementById("miyawaki_sakura")
 );
 
 serviceWorker.unregister();

@@ -3,7 +3,7 @@ import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
   ${reset};
-  html, body, #root {
+  html, body, #miyawaki_sakura {
     width: 100%;
     height: 100%;
   }

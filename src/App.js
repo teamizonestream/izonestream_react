@@ -1,9 +1,11 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Link } from "react-router-dom";
+import { useQuery } from "react-apollo-hooks";
 import styled, { keyframes } from "styled-components";
 import Lottie from "lottie-react-web";
 import background from "./assets/images/background.jpg";
 import NyanCat from "./assets/animation/nyan-cat.json";
+import GET_CATEGORIES from "./Queries/App";
 
 const Main = lazy(() => import("./pages/Main"));
 
@@ -82,6 +84,8 @@ const Content = styled.div`
 `;
 
 const App = () => {
+  const { data } = useQuery(GET_CATEGORIES);
+
   return (
     <Suspense fallback={<Lottie options={{ animationData: NyanCat }} />}>
       <Container>
@@ -91,10 +95,23 @@ const App = () => {
             <MenuArea>
               <ul>
                 <CategoryTitle>동영상</CategoryTitle>
-                <ListItem>
-                  <StyledLink to="/">메인</StyledLink>
-                </ListItem>
+                {data !== undefined &&
+                  data.categories.map(category => (
+                    <ListItem key={category.id}>
+                      <StyledLink to={`/videos/${category.id}`}>
+                        {category.name}
+                      </StyledLink>
+                    </ListItem>
+                  ))}
                 <CategoryTitle>사진</CategoryTitle>
+                {data !== undefined &&
+                  data.categories.map(category => (
+                    <ListItem key={category.id}>
+                      <StyledLink to={`/photos/${category.id}`}>
+                        {category.name}
+                      </StyledLink>
+                    </ListItem>
+                  ))}
               </ul>
             </MenuArea>
           </SidebarContent>

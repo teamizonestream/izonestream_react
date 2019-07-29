@@ -1,11 +1,11 @@
 import React from "react";
-import { Page, Header, Content, Title } from "../components/Page";
+import { Page, Header, Content, Search } from "../components/Page";
 
 const Main = () => {
   return (
     <Page>
       <Header>
-        <Title>동영상 제목</Title>
+        <Search placeholder=" 검색어를 입력해주세요" />
       </Header>
       <Content />
     </Page>

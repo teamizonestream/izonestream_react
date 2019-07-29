@@ -67,15 +67,17 @@ const ListItem = styled.li`
 `;
 
 const CategoryTitle = styled.p`
-  font-size: 0.8em;
+  font-size: 0.75em;
   color: rgba(255, 255, 255, 0.8);
   margin: 1em 0 0 0;
+  font-weight: 400;
 `;
 
 const StyledLink = styled(Link)`
   color: #ffffff;
   text-decoration: none;
   font-size: 1em;
+  font-weight: 400;
 `;
 
 const Content = styled.div`

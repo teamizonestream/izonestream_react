@@ -83,6 +83,7 @@ const StyledLink = styled(Link)`
 const Content = styled.div`
   flex: 17;
   background: #ffffff;
+  padding: 2em;
 `;
 
 const App = () => {

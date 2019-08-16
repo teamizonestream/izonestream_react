@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import { checkUrlExists } from "../utils";
 
 const Page = styled.div`
   width: 100%;
@@ -16,6 +18,10 @@ const Header = styled.div`
 
 const Content = styled.div`
   flex: 39;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Title = styled.p`
@@ -49,4 +55,51 @@ const Search = styled.input`
   }
 `;
 
-export { Page, Header, Content, Title, Search };
+const GridList = styled.div`
+  width: calc(100% - 4em);
+  height: calc(100% + 4em);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 20em;
+  grid-gap: 2em;
+  padding: 2em;
+`;
+
+const CardContainer = styled.div`
+  background: url(${props => `${props.thumb}`});
+  background-size: cover;
+  border-radius: 0.5em;
+  box-shadow: 0px 4px 12px rgba(125, 125, 125, 0.5);
+`;
+
+const CardTitle = styled.p`
+  width: calc(100% - 2em);
+  height: 4em;
+  margin-top: 16em;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  padding-left: 1em;
+  padding-right: 1em;
+`;
+
+const Card = ({ thumb, name }) => {
+  if (checkUrlExists(thumb)) {
+    return (
+      <CardContainer thumb={thumb}>
+        <CardTitle>{name}</CardTitle>
+      </CardContainer>
+    );
+  }
+
+  return (
+    <CardContainer thumb={require("../assets/images/background.jpg")}>
+      <CardTitle>{name}</CardTitle>
+    </CardContainer>
+  );
+};
+
+export { Page, Header, Content, Title, Search, GridList, Card };

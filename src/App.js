@@ -8,6 +8,7 @@ import NyanCat from "./assets/animation/nyan-cat.json";
 import GET_CATEGORIES from "./Queries/App";
 
 const Main = lazy(() => import("./pages/Main"));
+const Video = lazy(() => import("./pages/Video"));
 
 const backgroundScroll = keyframes`
   from {
@@ -121,6 +122,7 @@ const App = () => {
         </Sidebar>
         <Content>
           <Route exact path="/" component={Main} />
+          <Route exact path="/videos/:category" component={Video} />
         </Content>
       </Container>
     </Suspense>

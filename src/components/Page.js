@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import defaultBackground from "../assets/images/background.jpg";
 
 const Page = styled.div`
@@ -91,5 +92,15 @@ const Card = ({ thumb, name }) => (
     <CardTitle>{name}</CardTitle>
   </CardContainer>
 );
+
+Card.defaultProps = {
+  thumb: defaultBackground,
+  name: "오류가 발생했습니다"
+};
+
+Card.propTypes = {
+  thumb: PropTypes.string,
+  name: PropTypes.string
+};
 
 export { Page, Header, Content, Title, Search, GridList, Card };

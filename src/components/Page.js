@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { checkUrlExists } from "../utils";
+import defaultBackground from "../assets/images/background.jpg";
 
 const Page = styled.div`
   width: 100%;
@@ -66,7 +66,7 @@ const GridList = styled.div`
 `;
 
 const CardContainer = styled.div`
-  background: url(${props => `${props.thumb}`});
+  background: url(${props => `${props.thumb}`}), url(${defaultBackground});
   background-size: cover;
   border-radius: 0.5em;
   box-shadow: 0px 4px 12px rgba(125, 125, 125, 0.5);
@@ -86,20 +86,10 @@ const CardTitle = styled.p`
   padding-right: 1em;
 `;
 
-const Card = ({ thumb, name }) => {
-  if (checkUrlExists(thumb)) {
-    return (
-      <CardContainer thumb={thumb}>
-        <CardTitle>{name}</CardTitle>
-      </CardContainer>
-    );
-  }
-
-  return (
-    <CardContainer thumb={require("../assets/images/background.jpg")}>
-      <CardTitle>{name}</CardTitle>
-    </CardContainer>
-  );
-};
+const Card = ({ thumb, name }) => (
+  <CardContainer thumb={thumb}>
+    <CardTitle>{name}</CardTitle>
+  </CardContainer>
+);
 
 export { Page, Header, Content, Title, Search, GridList, Card };

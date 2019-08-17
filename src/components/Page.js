@@ -71,6 +71,11 @@ const CardContainer = styled.div`
   background-size: cover;
   border-radius: 0.5em;
   box-shadow: 0px 4px 12px rgba(125, 125, 125, 0.5);
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 12px 36px rgba(125, 125, 125, 0.9);
+    transition: all 0.5s;
+  }
 `;
 
 const CardTitle = styled.p`

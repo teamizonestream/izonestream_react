@@ -14,12 +14,4 @@ const getVideoURL = filePath =>
     "https://cdn.izone.kentastudio.com/"
   );
 
-const checkUrlExists = url => {
-  const image = new Image();
-
-  image.src = url;
-
-  return image.height !== 0;
-};
-
-export { getThumbURL, getVideoURL, checkUrlExists };
+export { getThumbURL, getVideoURL };
